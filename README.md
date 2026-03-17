@@ -1,94 +1,84 @@
-✈️ Flight Deal Tracker
+Flight Deal Tracker
 
-An automated Python-based tool that monitors flight prices and alerts you via SMS or Email when prices drop below your target threshold. It uses Google Sheets as a database to manage destinations and price limits.
+This is a small project I made as a learning experiment to track flight deals from London to different countries. The idea is simple: if a flight drops below a certain price listed in a Google Sheet, the program sends an email alert to anyone who signed up. I built it to practice working with APIs, automating tasks, and sending emails from Python.
 
-🚀 Key Features
+What It Does
 
-Automated Price Monitoring: Periodically scans for the cheapest flights to your desired locations.
+Tracks flights from London to destinations listed in a Google Sheet.
 
-Google Sheets Integration: Uses the Sheety API to read and update your destination list and target prices.
+Checks if the flight price is below a specific threshold.
 
-Automatic IATA Code Resolution: Automatically finds and fills in missing IATA airport codes for cities in your sheet.
+Lets new users sign up for email alerts right in the program.
 
-Smart Alerts: Sends instant notifications (via Twilio or SMTP) when a deal is detected.
+Sends emails automatically using Gmail whenever a deal is found.
 
-Flexible Search: Configurable search windows (e.g., next 6 months) and trip durations.
+Basically, you run the program, it checks flights, and emails you if there’s a good deal.
 
-📂 Project Structure
+Tech Stuff I Used
 
-File
+Python 3
 
-Description
+Libraries: requests, amadeus, dotenv, smtplib
 
-main.py
+APIs: Amadeus API for flights, Sheety API for Google Sheet data
 
-The main orchestrator that coordinates data fetching, flight searching, and notification logic.
+Gmail SMTP for sending emails
 
-data_manager.py
+.env file for API keys and email credentials
 
-Handles all interactions with the Google Sheet via the Sheety API.
+How to Run It
 
-flight_search.py
+Clone the repo:
 
-Manages API calls to flight search engines (Amadeus/Tequila) for IATA codes and prices.
-
-flight_data.py
-
-A data class that parses complex API responses into clean, usable Python objects.
-
-notification_manager.py
-
-Contains the logic for sending SMS or Email alerts when a price drop is found.
-
-🛠️ Setup & Installation
-
-1. Prerequisites
-
-Python 3.10+
-
-Sheety API Account: Link your Google Sheet (Columns: City, IATA Code, Lowest Price).
-
-Flight Search API: Sign up for Amadeus for Developers or Kiwi Tequila.
-
-Notification Service: A Twilio account for SMS/WhatsApp or an App Password for your Gmail account.
-
-2. Installation
-
-Clone the repository and install the required libraries:
-
-git clone [https://github.com/h0za1fa/Flight_deal_tracker.git](https://github.com/h0za1fa/Flight_deal_tracker.git)
+git clone https://github.com/h0za1fa/Flight_deal_tracker.git
 cd Flight_deal_tracker
+
+Install dependencies:
+
 pip install -r requirements.txt
 
+Make a .env file with your credentials:
 
-3. Environment Variables
+AMADEUS_API_KEY=your_amadeus_api_key
+AMADEUS_API_SECRET=your_amadeus_api_secret
+SHEETY_ENDPOINT=your_sheety_endpoint
+EMAIL=your_gmail_address
+EMAIL_PASSWORD=your_gmail_app_password
 
-Create a .env file in the root directory and add your credentials:
+Tip: If you use 2FA with Gmail, you need an app password.
 
-SHEETY_PRICES_ENDPOINT=[https://api.sheety.co/your_id/flightDeals/prices](https://api.sheety.co/your_id/flightDeals/prices)
-AMADEUS_API_KEY=your_amadeus_key
-AMADEUS_API_SECRET=your_amadeus_secret
-TWILIO_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_token
-TWILIO_VIRTUAL_NUMBER=your_twilio_number
-TWILIO_VERIFIED_NUMBER=your_personal_number
-
-
-🎮 Usage
-
-Simply run the main script to start the tracking process:
+Run the program:
 
 python main.py
 
+It will ask if you’re a new user and want to sign up for email alerts. After that, it checks flights and emails you if there’s a deal.
 
-Syncing: The script reads your Google Sheet.
+Project Files
+main.py                 # Entry point of the program
+flight_search.py        # Gets flights using Amadeus API
+data_manager.py         # Reads/writes data to Google Sheet
+notification_manager.py # Sends emails to users
+user_manager.py         # Handles new user signup
+What I Learned
 
-Updating: If a city is missing an IATA Code, it searches for it and updates your sheet automatically.
+How to work with APIs in Python
 
-Searching: It searches for the cheapest flights from your "home" city to all destinations in the sheet.
+Automating tasks like checking flights and sending emails
 
-Alerting: If a price is lower than the "Lowest Price" listed in your sheet, an alert is sent!
+Managing user input and storing data
 
-📝 License
+Using environment variables to keep credentials safe
 
-This project is open-source and available under the MIT License.
+Future Plans
+
+Allow tracking flights from cities other than London
+
+Filter by travel dates
+
+Make a small web dashboard for users
+
+Support more email providers
+
+License
+
+MIT License
