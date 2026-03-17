@@ -28,3 +28,11 @@ class DataManager:
         }
         response = requests.post(url, json=body)
         return response.status_code
+
+    def get_users(self):
+        self.page = 'users'
+        url = f'{self.base_url}users'
+        response = requests.get(url)
+        response_json = response.json()
+        email_list = [user["email"] for user in response_json["users"]]
+        return email_list

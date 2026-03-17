@@ -29,6 +29,7 @@ while looping:
 
                 if city_iata == destination and float(price) <= float(lowest_price):
                     message = f'Congrats! Go to {city} in just {price}£ on {departure_date}'
+                    email_list = data_manager.get_users()
                     # notification.send_notification(message)
                     print(message)
                     looping = False
