@@ -1,8 +1,3 @@
-I'll create a professional, copy-paste ready README.md file for your GitHub repository:
-markdown# ✈️ Flight Deal Tracker
-
-An automated Python-based tool that monitors real-time flight prices for your dream destinations and sends instant alerts when prices drop below your budget threshold. No more manual price checking—let the bot do the work!
-
 ## 🎯 Overview
 
 Manually checking flight prices daily is tedious and time-consuming. Flight prices fluctuate constantly, and you often miss narrow "deal windows." This automation tool solves that problem by continuously monitoring prices and notifying you the moment a deal appears.
