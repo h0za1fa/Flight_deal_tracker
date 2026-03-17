@@ -30,7 +30,7 @@ while looping:
                 if city_iata == destination and float(price) <= float(lowest_price):
                     message = f'Congrats! Go to {city} in just {price}£ on {departure_date}'
                     email_list = data_manager.get_users()
-                    # notification.send_notification(message)
+                    notification.send_notification(email_list ,message)
                     print(message)
                     looping = False
 
@@ -43,9 +43,10 @@ while looping:
             l_name = input('Last Name: ')
             mail = input('Email: ')
             confirm_email = input('Confirm Email: ')
-            if mail == confirm_email and data_manager.add_user(f_name, l_name, mail) == 200:
+            if mail != confirm_email:
+                print('Mail not valid')
+            elif mail == confirm_email and data_manager.add_user(f_name, l_name, mail) == 200:
                 print('Congrats! You have successfully Signed up!')
-                logged_in = True
         elif sign_in.lower() == 'y':
             print('Welcome to Flight Search!')
             print('Mails are being sent shortly!')
