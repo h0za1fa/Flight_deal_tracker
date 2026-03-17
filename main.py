@@ -47,6 +47,9 @@ while looping:
                 print('Mail not valid')
             elif mail == confirm_email and data_manager.add_user(f_name, l_name, mail) == 200:
                 print('Congrats! You have successfully Signed up!')
+                signed_mail = [mail]
+                message = f'Congrats! You have successfully Signed up!'
+                notification.send_notification(signed_mail ,message)
         elif sign_in.lower() == 'y':
             print('Welcome to Flight Search!')
             print('Mails are being sent shortly!')
