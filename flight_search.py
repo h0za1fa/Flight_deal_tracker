@@ -3,15 +3,11 @@ from http.client import responses
 import requests, json
 from data_manager import DataManager
 
-client_id= "T4SHkBCdfWAt0GfErt5KWOBxgbFdLUDU"
-client_secret = "qbWq5aMtLe4SjAfI"
-
-
 class FlightSearch:
     #This class is responsible for talking to the Flight Search API.
-    def __init__(self):
-        self.client_id = client_id
-        self.client_secret = client_secret
+    def __init__(self,amadeus_client_id,amadeus_client_secret):
+        self.client_id = amadeus_client_id
+        self.client_secret = amadeus_client_secret
         self.access_token = ''
         self.destination_sheet = DataManager()
         self.destination_sheet_json = self.destination_sheet.prices()

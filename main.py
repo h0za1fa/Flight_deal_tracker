@@ -1,7 +1,10 @@
 #This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
+from dotenv import dotenv_values
 import flight_data
 import notification_manager
 import data_manager
+
+env = dotenv_values("constants.env")
 
 notification = notification_manager.NotificationManager()
 res = flight_data.FlightData()
