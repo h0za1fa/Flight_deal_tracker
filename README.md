@@ -199,4 +199,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Made with ☕ by [h0za1fa](https://github.com/h0za1fa)**
-This README is now ready to copy and paste directly into your GitHub repository! It's professional, comprehensive, and highlights the technical depth of your project—perfect for showcasing on your resume. 🚀
