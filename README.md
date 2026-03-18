@@ -102,13 +102,7 @@ Flight_deal_tracker/
    AMADEUS_API_KEY=your_amadeus_api_key
    AMADEUS_API_SECRET=your_amadeus_api_secret
    
-   # Twilio (Optional - for SMS)
-   TWILIO_SID=your_twilio_account_sid
-   TWILIO_AUTH_TOKEN=your_twilio_auth_token
-   TWILIO_PHONE_NUMBER=your_twilio_phone_number
-   YOUR_PHONE_NUMBER=your_destination_phone_number
-   
-   # Email (Optional - for email alerts)
+   # Email 
    EMAIL_PROVIDER_SMTP=smtp.gmail.com
    EMAIL_PROVIDER_PASSWORD=your_gmail_app_password
 ```
@@ -195,6 +189,9 @@ This project is open source and available under the [MIT License](LICENSE).
 - [Amadeus for Developers](https://developers.amadeus.com/) for the flight data API
 - [Sheety](https://sheety.co/) for the Google Sheets API integration
 - [Twilio](https://www.twilio.com/) for SMS notification capabilities
+
+## 🛑 Disclaimer
+AI was used when creating this README file but th eprogram is entirely made by myself.
 
 ---
 
