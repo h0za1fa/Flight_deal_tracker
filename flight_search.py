@@ -1,11 +1,12 @@
 from http.client import responses
-
 import requests, json
 from data_manager import DataManager
+from datetime import datetime, timedelta  # Added this import
+
 
 class FlightSearch:
-    #This class is responsible for talking to the Flight Search API.
-    def __init__(self,amadeus_client_id,amadeus_client_secret):
+    # This class is responsible for talking to the Flight Search API.
+    def __init__(self, amadeus_client_id, amadeus_client_secret):
         self.client_id = amadeus_client_id
         self.client_secret = amadeus_client_secret
         self.access_token = ''
@@ -21,12 +22,18 @@ class FlightSearch:
             "client_id": self.client_id,
             "client_secret": self.client_secret
         }
-        response = requests.post(url="https://test.api.amadeus.com/v1/security/oauth2/token", headers=headers, data=body)
+        response = requests.post(url="https://test.api.amadeus.com/v1/security/oauth2/token", headers=headers,
+                                 data=body)
         self.access_token = response.json()['access_token']
 
     def search_flight(self):
-        responses = []   #tur gai yar mohabtan wale
-        for i in range(0,9):
+        responses = []  # tur gai yar mohabtan wale
+
+        # Calculate a date 7 days from today
+        future_date = datetime.now() + timedelta(days=7)
+        formatted_date = future_date.strftime("%Y-%m-%d")
+
+        for i in range(0, 9):
             destination = self.destination_sheet_json["prices"][i]["iataCode"]
 
             headers = {"Authorization": f"Bearer {self.access_token}"}
@@ -35,7 +42,7 @@ class FlightSearch:
             params = {
                 "originLocationCode": "LON",
                 "destinationLocationCode": destination,
-                "departureDate": "2026-06-15",  # Use a specific date in the future
+                "departureDate": formatted_date,  # Now completely dynamic!
                 "adults": 1,
                 "nonStop": "true",
                 "currencyCode": "GBP",
